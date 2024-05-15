@@ -8,7 +8,7 @@ import * as Styles from './TicketsFilter.styles'
 
 export default function TicketsFilter() {
     const dispatch = useDispatch()
-    const selectedOption = useSelector((state: any) => state.ticketsFilter.selectedOption)
+    const selectedOption = useSelector((state: any) => state.localReducer.selectedOption)
     const handleRadioChange = (e: any) => {
         dispatch(setSelectedOption(e.target.value))
     }

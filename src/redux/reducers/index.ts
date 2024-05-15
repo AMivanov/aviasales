@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { localReducers } from './localReducers';
 
 const rootReducer = combineReducers({
-    ticketsFilter: localReducers,
+    localReducer: localReducers,
 })
 
 export default rootReducer

@@ -13,10 +13,10 @@ const plainOptions = ['Без пересадок', '1 пересадка', '2 п
 // const defaultCheckedList = ['Без пересадок', '1 пересадка', '2 пересадки'];
 
 export default function TransfersFilter () {
-    // const ticketsFilter = useSelector((state) => console.log(state))
-    // console.log(ticketsFilter)
+    // const localReducer = useSelector((state) => console.log(state))
+    // console.log(localReducer)
     const dispatch = useDispatch();
-    const checkedList = useSelector((state: any) => state.ticketsFilter.checkboxValues);
+    const checkedList = useSelector((state: any) => state.localReducer.checkboxValues);
 
     // const [checkedList, setCheckedList] = useState<CheckboxValueType[]>(defaultCheckedList);
 

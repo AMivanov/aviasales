@@ -13,6 +13,7 @@ export const TicketCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 25px;
 `
 
 export const TicketAmount = styled.h2`

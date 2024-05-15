@@ -5,23 +5,28 @@ export const FlightOptions = styled.div`
   height: 39px;
   width: 462px;
   display: flex;
-  justify-content: space-between;
+  //justify-content: space-between;
   padding-right: 60px;
 `
 
 export const Direction = styled.div`
   display: flex;
   flex-direction: column;
+  position: absolute;
 `
 
 export const IntervalFlight = styled.div`
   display: flex;
   flex-direction: column;
+  position: absolute;
+  left: 200px;
 `
 
 export const StopsFlight = styled.div`
   display: flex;
   flex-direction: column;
+  position: absolute;
+  left: 360px;
 `
 
 export const FlightText = styled.p`
