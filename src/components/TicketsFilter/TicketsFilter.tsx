@@ -2,7 +2,7 @@ import { ConfigProvider, Flex, Radio, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
 import TicketsList from '../TicketsList';
-import { setSelectedOption } from '../../redux/actions/localActions';
+import * as ticketsActions from '../../redux/actions/localActions';
 
 import * as Styles from './TicketsFilter.styles'
 
@@ -10,7 +10,7 @@ export default function TicketsFilter() {
     const dispatch = useDispatch()
     const selectedOption = useSelector((state: any) => state.localReducer.selectedOption)
     const handleRadioChange = (e: any) => {
-        dispatch(setSelectedOption(e.target.value))
+        dispatch(ticketsActions.setSelectedOption(e.target.value))
     }
     return (
     <Styles.Filters>
@@ -24,15 +24,15 @@ export default function TicketsFilter() {
         >
             <Flex vertical gap="middle">
                 <Radio.Group
-                  defaultValue="a"
+                  defaultValue="cheap"
                   buttonStyle="solid"
                   size="large"
                   value={selectedOption}
                   onChange={handleRadioChange}
                 >
-                    <Radio.Button value="a">САМЫЙ ДЕШЕВЫЙ</Radio.Button>
-                    <Radio.Button value="b">САМЫЙ БЫСТРЫЙ</Radio.Button>
-                    <Radio.Button value="c">ОПТИМАЛЬНЫЙ</Radio.Button>
+                    <Radio.Button value="cheap">САМЫЙ ДЕШЕВЫЙ</Radio.Button>
+                    <Radio.Button value="fast">САМЫЙ БЫСТРЫЙ</Radio.Button>
+                    <Radio.Button value="optimal">ОПТИМАЛЬНЫЙ</Radio.Button>
                 </Radio.Group>
             </Flex>
         </ConfigProvider>
@@ -46,7 +46,13 @@ export default function TicketsFilter() {
                 },
             }}
         >
-            <Button type="primary" size="large">ПОКАЗАТЬ ЕШЕ 5 БИЛЕТОВ!</Button>
+            <Button
+              type="primary"
+              size="large"
+              onClick={() => dispatch(ticketsActions.showMore())}
+            >
+                ПОКАЗАТЬ ЕШЕ 5 БИЛЕТОВ!
+            </Button>
         </ConfigProvider>
     </Styles.Filters>
   );

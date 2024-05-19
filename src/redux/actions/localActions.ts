@@ -8,7 +8,8 @@ import { SET_CHECKED_LIST,
     FETCH_ID_ERROR,
     FETCH_TICKETS_START,
     FETCH_TICKETS_SUCCESS,
-    FETCH_TICKETS_ERROR } from '../types/localTypes';
+    FETCH_TICKETS_ERROR,
+    SHOW_MORE_TICKETS } from '../types/localTypes';
 
 export function fetchIdStart() {
     return {
@@ -77,6 +78,12 @@ export function fetchTickets(searchId: string | number) {
             }
             dispatch(fetchTicketsError())
         }
+    }
+}
+
+export function showMore() {
+    return {
+        type: SHOW_MORE_TICKETS,
     }
 }
 

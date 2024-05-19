@@ -7,16 +7,18 @@ import { SET_CHECKED_LIST,
     FETCH_ID_ERROR,
     FETCH_TICKETS_START,
     FETCH_TICKETS_SUCCESS,
-    FETCH_TICKETS_ERROR } from '../types/localTypes';
+    FETCH_TICKETS_ERROR,
+    SHOW_MORE_TICKETS } from '../types/localTypes';
 
 const initialState = {
     tickets: [],
     checkboxValues: ['Без пересадок', '1 пересадка', '2 пересадки'],
-    selectedOption: 'a',
+    selectedOption: 'cheap',
     searchId: '',
     loadingId: false,
     loadingTickets: false,
     error: false,
+    showLen: 5,
 }
 
 export const localReducers = (state = initialState, action: any) => {
@@ -62,6 +64,11 @@ export const localReducers = (state = initialState, action: any) => {
                 ...state,
                 checkboxValues: action.payload,
             };
+        case SHOW_MORE_TICKETS:
+            return {
+                ...state,
+                showLen: state.showLen + 5,
+            }
         case SET_SELECTED_OPTION:
             return {
                 ...state,

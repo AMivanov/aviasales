@@ -9,7 +9,7 @@ interface TicketProps {
 
 export default function Ticket (props: TicketProps) {
     const { ticketElem } = props
-    console.log(ticketElem)
+    // console.log(ticketElem)
     return (
         <Styles.TicketCard>
             <Styles.TicketAmount>
