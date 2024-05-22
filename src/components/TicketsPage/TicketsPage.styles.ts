@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 
-export const Filters = styled.div`
-  //display: flex;
-  //height: 50px;
+export const Page = styled.div`
   width: 502px;
-  //border: 1px solid #DFE5EC;
-  //border-radius: 10px;
 `
 
 export const Button = styled.button`

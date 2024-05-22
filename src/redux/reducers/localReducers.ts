@@ -1,5 +1,3 @@
-// import { CheckboxValueType } from 'antd/es/checkbox/Group';
-
 import { SET_CHECKED_LIST,
     SET_SELECTED_OPTION,
     FETCH_ID_START,

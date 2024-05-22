@@ -14,5 +14,4 @@ export const Settings = styled.section`
   flex-direction: column;
   font-size: 12px;
   line-height: 12px;
-  //justify-content: space-between;
 `

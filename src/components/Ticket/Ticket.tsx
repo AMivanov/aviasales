@@ -1,15 +1,10 @@
 import TicketInfo from '../TicketInfo';
-import { ITicket } from '../../interfaces';
+import { ITicketElem } from '../../interfaces';
 
 import * as Styles from './Ticket.styles'
 
-interface TicketProps {
-    ticketElem: ITicket
-}
-
-export default function Ticket (props: TicketProps) {
+export default function Ticket (props: ITicketElem) {
     const { ticketElem } = props
-    // console.log(ticketElem)
     return (
         <Styles.TicketCard>
             <Styles.TicketAmount>

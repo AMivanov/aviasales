@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TicketCard = styled.div`
+export const TicketCard = styled.li`
   border: 1px solid #DFE5EC;
   border-radius: 7px;
   box-shadow: 
@@ -18,9 +18,6 @@ export const TicketCard = styled.div`
 
 export const TicketAmount = styled.h2`
   font-size: 24px;
-  //font-weight: 600;
-  //line-height: 24px;
-  //text-align: left;
   margin: 0;
   color: #2196F3;
 ;

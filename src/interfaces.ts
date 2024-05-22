@@ -13,3 +13,7 @@ export interface ITicket {
         ISegment, ISegment
     ]
 }
+
+export interface ITicketElem {
+    ticketElem: ITicket
+}

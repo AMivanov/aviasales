@@ -1,23 +1,16 @@
-import { ISegment } from '../../interfaces'
+import { ISegment } from '../../interfaces';
 
 import * as Styles from './TicketInfo.styles'
+import { getFlightTime, getFormattedDate, getStopsWord } from './TicketInfo.utils';
 
-export default function TicketInfo ({ origin, destination, duration, stops, date }: ISegment) {
+export default function TicketInfo (props: ISegment) {
+    const { origin, destination, duration, stops, date } = props
+
     const stopsArr = stops.map((elem) => elem)
-    let stopsWord = 'ПЕРЕСАДКА'
-    if (stopsArr.length === 0) {
-        stopsWord = 'ПЕРЕСАДОК'
-    } else if (stopsArr.length === 1) {
-        stopsWord = 'ПЕРЕСАДКА'
-    } else {
-        stopsWord = 'ПЕРЕСАДКИ'
-    }
-    const destinationDate = new Date(date)
-    const startTime = `${String(destinationDate.getHours()).padStart(2, '0')}:${String(destinationDate.getMinutes()).padStart(2, '0')}`
-    destinationDate.setHours(destinationDate.getHours() + 1)
-    const endTime = `${String(destinationDate.getHours()).padStart(2, '0')}:${String(destinationDate.getMinutes()).padStart(2, '0')}`
-    const hours = Math.floor(duration / 60)
-    const minutes = duration % 60
+    const stopsWord = getStopsWord(stopsArr)
+    const { startTime, endTime } = getFormattedDate(date)
+    const { hours, minutes } = getFlightTime(duration)
+
     return (
         <Styles.FlightOptions>
             <Styles.Direction>

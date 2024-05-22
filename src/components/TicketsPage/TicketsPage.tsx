@@ -3,17 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import TicketsList from '../TicketsList';
 import * as ticketsActions from '../../redux/actions/localActions';
+import { RootState } from '../../redux/store/store';
 
-import * as Styles from './TicketsFilter.styles'
+import * as Styles from './TicketsPage.styles'
+import { handleRadioChangeFunc } from './TicketsPage.utils';
 
-export default function TicketsFilter() {
+export default function TicketsPage() {
     const dispatch = useDispatch()
-    const selectedOption = useSelector((state: any) => state.localReducer.selectedOption)
-    const handleRadioChange = (e: any) => {
-        dispatch(ticketsActions.setSelectedOption(e.target.value))
-    }
+    const selectedOption = useSelector((state: RootState) => state.localReducer.selectedOption)
+
+    const handleRadioChange = handleRadioChangeFunc(dispatch)
+
     return (
-    <Styles.Filters>
+    <Styles.Page>
         <ConfigProvider
           theme={{
                 token: {
@@ -40,7 +42,6 @@ export default function TicketsFilter() {
         <ConfigProvider
           theme={{
                 token: {
-                    // padding: 42,
                     fontSize: 9,
                     sizeMS: 187,
                 },
@@ -54,6 +55,6 @@ export default function TicketsFilter() {
                 ПОКАЗАТЬ ЕШЕ 5 БИЛЕТОВ!
             </Button>
         </ConfigProvider>
-    </Styles.Filters>
+    </Styles.Page>
   );
 }

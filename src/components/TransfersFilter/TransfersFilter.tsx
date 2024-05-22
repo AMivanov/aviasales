@@ -1,39 +1,20 @@
-import { Checkbox, CheckboxProps, ConfigProvider } from 'antd';
-// import { useState } from 'react';
-import { CheckboxValueType } from 'antd/es/checkbox/Group';
+import { Checkbox, ConfigProvider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setCheckedList } from '../../redux/actions/localActions';
+import { RootState } from '../../redux/store/store';
 
 import * as Styles from './TransfersFilter.styles'
-
-const CheckboxGroup = Checkbox.Group;
-
-const plainOptions = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки'];
-// const defaultCheckedList = ['Без пересадок', '1 пересадка', '2 пересадки'];
+import * as Constants from './TransfersFilter.constants'
+import { handleCheckboxChanges } from './TransferFilter.utils';
 
 export default function TransfersFilter () {
-    // const localReducer = useSelector((state) => console.log(state))
-    // console.log(localReducer)
     const dispatch = useDispatch();
-    const checkedList = useSelector((state: any) => state.localReducer.checkboxValues);
+    const checkedList = useSelector((state: RootState) => state.localReducer.checkboxValues);
 
-    // const [checkedList, setCheckedList] = useState<CheckboxValueType[]>(defaultCheckedList);
+    const checkAll = Constants.plainOptions.length === checkedList.length;
+    const indeterminate = checkedList.length > 0 && checkedList.length < Constants.plainOptions.length;
 
-        const checkAll = plainOptions.length === checkedList.length;
-        const indeterminate = checkedList.length > 0 && checkedList.length < plainOptions.length;
-
-        const onChange = (list: CheckboxValueType[]) => {
-            dispatch(setCheckedList(list));
-            // setCheckedList(list);
-            // console.log(list)
-        };
-
-        const onCheckAllChange: CheckboxProps['onChange'] = (e) => {
-            dispatch(setCheckedList(e.target.checked ? plainOptions : []))
-            // setCheckedList(e.target.checked ? plainOptions : []);
-            // console.log(e.target.checked)
-        };
+    const { onChange, onCheckAllChange } = handleCheckboxChanges(dispatch)
 
     return (
         <Styles.Settings>
@@ -49,8 +30,8 @@ export default function TransfersFilter () {
                 <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
                     Все
                 </Checkbox>
-                <CheckboxGroup
-                  options={plainOptions}
+                <Constants.CheckboxGroup
+                  options={Constants.plainOptions}
                   value={checkedList}
                   onChange={onChange}
                 />
