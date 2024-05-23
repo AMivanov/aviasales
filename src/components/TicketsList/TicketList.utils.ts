@@ -1,4 +1,4 @@
-import { ITicket } from '../../interfaces';
+import { ITicketProps } from '../../interfaces';
 
 export const filterTicketsPrice = (tickets: any[], selectedOption: string) => {
     let sortedTicketsPrice = [...tickets]
@@ -20,7 +20,7 @@ export const filterTicketsPrice = (tickets: any[], selectedOption: string) => {
     return sortedTicketsPrice
 }
 
-export const filterTicketsStops = (ticket: ITicket, checkboxValues: string[]) => {
+export const filterTicketsStops = (ticket: ITicketProps, checkboxValues: string[]) => {
     const stopsCount = ticket.segments.map((elem) => elem.stops.length)
     if (checkboxValues.includes('Без пересадок')) {
         return stopsCount.some((count) => count === 0);

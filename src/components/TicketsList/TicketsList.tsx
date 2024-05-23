@@ -3,7 +3,7 @@ import { Spin } from 'antd';
 
 import Ticket from '../Ticket';
 import { RootState } from '../../redux/store/store';
-import { ITicket } from '../../interfaces';
+import { ITicketProps } from '../../interfaces';
 
 import * as Styles from './TicketsList.styles'
 import { getDisplayedTickets, filterTicketsPrice } from './TicketList.utils';
@@ -18,7 +18,7 @@ export default function TicketsList () {
     const sortedTicketsPrice = filterTicketsPrice(tickets, selectedOption)
     const displayedTickets = getDisplayedTickets(sortedTicketsPrice, checkboxValues, showLen)
 
-    const ticketsArr = displayedTickets.map((ticketElem: ITicket, index: number) => {
+    const ticketsArr = displayedTickets.map((ticketElem: ITicketProps, index: number) => {
         return (
             <Ticket
               key={index}

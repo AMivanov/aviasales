@@ -1,4 +1,4 @@
-export interface ISegment {
+export interface ISegmentProps {
     origin: string;
     destination: string;
     date: string;
@@ -6,14 +6,14 @@ export interface ISegment {
     duration: number;
 }
 
-export interface ITicket {
+export interface ITicketProps {
     carrier: string;
     price: number;
     segments: [
-        ISegment, ISegment
+        ISegmentProps, ISegmentProps
     ]
 }
 
-export interface ITicketElem {
-    ticketElem: ITicket
+export interface ITicketElemProps {
+    ticketElem: ITicketProps
 }

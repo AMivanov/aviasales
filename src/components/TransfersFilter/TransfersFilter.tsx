@@ -1,20 +1,27 @@
-import { Checkbox, ConfigProvider } from 'antd';
+import { Checkbox, CheckboxProps, ConfigProvider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
+import { CheckboxValueType } from 'antd/es/checkbox/Group';
 
 import { RootState } from '../../redux/store/store';
+import { setCheckedList } from '../../redux/actions/localActions';
 
 import * as Styles from './TransfersFilter.styles'
 import * as Constants from './TransfersFilter.constants'
-import { handleCheckboxChanges } from './TransferFilter.utils';
 
 export default function TransfersFilter () {
     const dispatch = useDispatch();
     const checkedList = useSelector((state: RootState) => state.localReducer.checkboxValues);
-
+    const CheckboxGroup = Checkbox.Group;
     const checkAll = Constants.plainOptions.length === checkedList.length;
     const indeterminate = checkedList.length > 0 && checkedList.length < Constants.plainOptions.length;
 
-    const { onChange, onCheckAllChange } = handleCheckboxChanges(dispatch)
+    const onChange = (list: CheckboxValueType[]) => {
+        dispatch(setCheckedList(list));
+    }
+
+    const onCheckAllChange: CheckboxProps['onChange'] = (e) => {
+        dispatch(setCheckedList(e.target.checked ? Constants.plainOptions : []))
+    }
 
     return (
         <Styles.Settings>
@@ -30,7 +37,7 @@ export default function TransfersFilter () {
                 <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
                     Все
                 </Checkbox>
-                <Constants.CheckboxGroup
+                <CheckboxGroup
                   options={Constants.plainOptions}
                   value={checkedList}
                   onChange={onChange}

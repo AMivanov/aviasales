@@ -1,9 +1,9 @@
-import { ISegment } from '../../interfaces';
+import { ISegmentProps } from '../../interfaces';
 
 import * as Styles from './TicketInfo.styles'
 import { getFlightTime, getFormattedDate, getStopsWord } from './TicketInfo.utils';
 
-export default function TicketInfo (props: ISegment) {
+export default function TicketInfo (props: ISegmentProps) {
     const { origin, destination, duration, stops, date } = props
 
     const stopsArr = stops.map((elem) => elem)

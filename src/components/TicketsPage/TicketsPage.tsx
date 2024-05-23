@@ -1,4 +1,4 @@
-import { ConfigProvider, Flex, Radio, Button } from 'antd';
+import { ConfigProvider, Flex, Radio, Button, RadioChangeEvent } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
 import TicketsList from '../TicketsList';
@@ -6,14 +6,13 @@ import * as ticketsActions from '../../redux/actions/localActions';
 import { RootState } from '../../redux/store/store';
 
 import * as Styles from './TicketsPage.styles'
-import { handleRadioChangeFunc } from './TicketsPage.utils';
 
 export default function TicketsPage() {
     const dispatch = useDispatch()
     const selectedOption = useSelector((state: RootState) => state.localReducer.selectedOption)
-
-    const handleRadioChange = handleRadioChangeFunc(dispatch)
-
+    const handleRadioChange = (e: RadioChangeEvent) => {
+        dispatch(ticketsActions.setSelectedOption(e.target.value))
+    }
     return (
     <Styles.Page>
         <ConfigProvider

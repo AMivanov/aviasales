@@ -17,7 +17,7 @@ export function fetchId() {
             if (response.status === 200) {
                 dispatch(fetchIdSuccess(response.data.searchId))
             }
-        } catch (e) {
+        } catch (e: any) {
             dispatch(fetchIdError())
         }
     }
@@ -30,7 +30,6 @@ export function fetchTickets(searchId: string | number) {
             const response = await axios.get(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
             const tickets = [...response.data.tickets]
             if (response.status === 200) {
-                dispatch(fetchTicketsSuccess(tickets))
                 if (tickets.length === 0) {
                     fetchTickets(searchId)
                 } else {
